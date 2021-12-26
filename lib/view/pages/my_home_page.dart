@@ -1,4 +1,5 @@
 import 'package:blocmanagement/bloc/counter/bloc_counter.dart';
+import 'package:blocmanagement/view/pages/pokemon_name.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -26,7 +27,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   const Text(
-                    'Chega por favor',
+                    'Chega favor',
                   ),
                   Text(count.toString()),
                 ],
@@ -40,7 +41,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: const Icon(Icons.add),
                 ),
                 FloatingActionButton(
-                  onPressed: () => context.read<CounterBloc>().decrement(),
+                  onPressed: () => context.read()<CounterBloc>().decrement(),
                   tooltip: 'Increment',
                   child: const Icon(Icons.add),
                 ),
@@ -60,17 +61,25 @@ class _MyHomePageState extends State<MyHomePage> {
                   'You have pushed the button this many times:',
                 ),
                 Text(count.toString()),
+                ElevatedButton(
+                    onPressed: () {
+                      Navigator.of(context)
+                          .pushNamed(PokemonNamePage.routeName);
+                    },
+                    child: Text("Pokemon"))
               ],
             ),
           ),
           floatingActionButton: Column(
             children: [
               FloatingActionButton(
+                heroTag: "Teste",
                 onPressed: () => context.read<CounterBloc>().increment(),
                 tooltip: 'Increment',
                 child: const Icon(Icons.add),
               ),
               FloatingActionButton(
+                heroTag: "Teste2",
                 onPressed: () => context.read<CounterBloc>().decrement(),
                 tooltip: 'Increment',
                 child: const Icon(Icons.add),

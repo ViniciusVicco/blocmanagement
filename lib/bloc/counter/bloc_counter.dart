@@ -1,7 +1,6 @@
 // ignore_for_file: avoid_print
 
 import 'package:bloc/bloc.dart';
-import 'package:flutter/material.dart';
 
 enum CounterEventEnum { increment, decrement }
 
@@ -22,6 +21,7 @@ class CounterBloc extends Bloc<CounterEventEnum, int> {
 
   @override
   void onEvent(CounterEventEnum event) {
+    if (event == CounterEventEnum.decrement) {}
     print(event);
     super.onEvent(event);
   }

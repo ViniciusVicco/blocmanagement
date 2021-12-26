@@ -1,3 +1,4 @@
+import 'package:blocmanagement/view/pages/pokemon_name.dart';
 import 'package:flutter/material.dart';
 
 import 'pages/my_home_page.dart';
@@ -14,6 +15,12 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      routes: {
+        "": (context) => const MyHomePage(
+              title: "Teste",
+            ),
+        "/PokemonNamePage": (context) => const PokemonNamePage(),
+      },
     );
   }
 }
