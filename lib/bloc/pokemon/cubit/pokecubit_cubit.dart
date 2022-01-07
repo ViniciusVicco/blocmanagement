@@ -1,33 +1,22 @@
-import 'dart:math';
-
 import 'package:bloc/bloc.dart';
+import 'package:blocmanagement/bloc/repository/pokemon_repository.dart';
 import 'package:blocmanagement/models/pokemon_model.dart';
 import 'package:dio/dio.dart';
-import 'package:meta/meta.dart';
+import 'package:flutter/cupertino.dart';
 
 part 'pokecubit_state.dart';
 
-class PokecubitCubit extends Cubit<PokecubitState> {
-  Dio dio = Dio();
-  PokecubitCubit()
-      : super(PokecubitState(
-            pokemon: Pokemon(
-              name: "",
-              url: "",
-            ),
-            isLoading: false));
+class PokecubitCubit extends Cubit<PokemonCubitState> {
+  PokecubitCubit() : super(PokemonCubitState(pokemon: Pokemon.safeInstance()));
 
-  Future<void> obterPokemon() async {
-    final response =
-        await dio.get("https://pokeapi.co/api/v2/pokemon?limit=100&offset=200");
-    final results = response.data['results'] as List;
-    List<Pokemon> pokeList = [];
-    results.forEach((element) {
-      pokeList.add(Pokemon.fromJson(element));
-    });
-    Random r = Random();
-    final value = pokeList[r.nextInt(pokeList.length)];
+  PokemonRepository repository = PokemonRepository();
 
-    emit(PokecubitState(pokemon: value, isLoading: false));
+  Pokemon pokemon = Pokemon.safeInstance();
+
+  Future<void> getPokemonm() async {
+    emit(PokemonCubtLoadEvent());
+    Pokemon poke = await repository.obterPokemon();
+    emit(PokemonCubitState(pokemon: poke));
+    pokemon = poke;
   }
 }

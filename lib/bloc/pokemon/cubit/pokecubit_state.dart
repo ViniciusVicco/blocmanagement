@@ -1,7 +1,17 @@
 part of 'pokecubit_cubit.dart';
 
-class PokecubitState {
+class PokemonCubitState {
   Pokemon pokemon;
-  bool isLoading;
-  PokecubitState({required this.pokemon, required this.isLoading});
+
+  PokemonCubitState({required this.pokemon});
+}
+
+class PokemonCubitGetState extends PokemonCubitState {
+  BuildContext context;
+
+  PokemonCubitGetState(this.context) : super(pokemon: Pokemon.safeInstance());
+}
+
+class PokemonCubtLoadEvent extends PokemonCubitState {
+  PokemonCubtLoadEvent() : super(pokemon: Pokemon.safeInstance());
 }

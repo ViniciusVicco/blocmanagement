@@ -24,24 +24,25 @@ class _PokemonNamePageState extends State<PokemonNamePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Center(
-                child: BlocBuilder<PokecubitCubit, PokecubitState>(
+                child: BlocBuilder<PokecubitCubit, PokemonCubitState>(
                   builder: (context, state) {
-                    return Text(state.pokemon.name.isEmpty
-                        ? ""
-                        : state.pokemon.name[0].toUpperCase() +
-                            state.pokemon.name.substring(1));
+                    if (state == PokemonCubtLoadEvent()) {
+                      return CircularProgressIndicator();
+                    }
+
+                    return Text(context.read<PokecubitCubit>().pokemon.name);
                   },
                 ),
               ),
             ],
           ),
-          floatingActionButton: BlocBuilder<PokecubitCubit, PokecubitState>(
+          floatingActionButton: BlocBuilder<PokecubitCubit, PokemonCubitState>(
             builder: (context, state) {
               return FloatingActionButton(
                 heroTag: "buttonP",
                 child: Text("P"),
                 onPressed: () async {
-                  await BlocProvider.of<PokecubitCubit>(context).obterPokemon();
+                  await BlocProvider.of<PokecubitCubit>(context).getPokemonm();
                 },
               );
             },
