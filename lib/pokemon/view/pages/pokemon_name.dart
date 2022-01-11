@@ -1,5 +1,4 @@
-import 'package:blocmanagement/bloc/pokemon/cubit/pokecubit_cubit.dart';
-import 'package:blocmanagement/models/pokemon_model.dart';
+import 'package:blocmanagement/pokemon/bloc/pokemon/cubit/pokecubit_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
