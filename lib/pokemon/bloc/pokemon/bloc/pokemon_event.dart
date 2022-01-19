@@ -1,9 +1,9 @@
 //Use comparison "is" never "=="
 
-abstract class PokeEvent {}
+abstract class PokemonEvent {}
 
-class LoadingPokeEvent implements PokeEvent {}
+class FetchPokemon implements PokemonEvent {}
 
-class SuccesPokeEvent extends PokeEvent {}
+class FetchAllPokemons extends PokemonEvent {}
 
-class FailurePokeEvent extends PokeEvent {}
+class LoadPokemonStatus extends PokemonEvent {}
