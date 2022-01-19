@@ -1,11 +1,8 @@
-import 'dart:html';
-
 import 'package:bloc/bloc.dart';
 import 'package:blocmanagement/pokemon/bloc/pokemon/bloc/pokemon_event.dart';
+import 'package:blocmanagement/pokemon/bloc/pokemon/bloc/pokemon_state.dart';
 import 'package:blocmanagement/pokemon/bloc/repository/pokemon_repository.dart';
 import 'package:blocmanagement/pokemon/models/pokemon_model.dart';
-
-import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 
 part 'pokecubit_state.dart';
@@ -17,7 +14,7 @@ class PokecubitCubit extends Cubit<PokemonCubitState> {
 
   Pokemon pokemon = Pokemon.safeInstance();
 
-  Stream mapEventToState(PokeEvent event) async* {
+  Stream mapEventToState(PokemonEvent event) async* {
     if (event is LoadingPokeEvent) {}
   }
 
